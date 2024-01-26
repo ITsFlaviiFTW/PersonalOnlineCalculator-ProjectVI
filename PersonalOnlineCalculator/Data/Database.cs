@@ -9,7 +9,7 @@ using System;
 using System.Linq;
 using Microsoft.AspNetCore.Identity;
 
-namespace PersonalOnlineCalculator.Services
+namespace PersonalOnlineCalculator.Data
 {
 
     public static class Database
