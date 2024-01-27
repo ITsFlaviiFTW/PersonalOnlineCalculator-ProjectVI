@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
+.index-page-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding-bottom: 80px;
+    background-color: #d3e9fd;
+  }
+
+.calculator-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 10px 10px 10px 10px;
+    gap: 30px;
+    background-color: #d3e9fd;
+    max-width: fit-content;
+}
+
+.calculator-container input:hover{
+    background-color: #1991ff;
+}
+
+.calculator {
+    padding: 10px;
+    height: 580px;
+    width: 380px;
+    margin: auto;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    border-radius: 1rem;
+}
+
+.history {
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    background-color: white;
+    min-width: 200px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.history td {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    text-align: left;
+    border-top: 1px solid #ddd; 
+    flex-wrap: nowrap;
+}
+
+.delete-button {
+    margin-left: 10px;
+    cursor: pointer; 
+    align-self: center; 
+}
+
+  .history th{
+    padding: 8px;
+    text-align: left;
+  }
+
+.display-box {
+    font-family: 'Orbitron', sans-serif;
+    background-color: #dcdbe1;
+    border: solid black 0.5px;
+    color: black;
+    border-radius: 5px;
+    width: 100%;
+    height: 61%;
+}
+
+.td{
+    position: relative;
+    display: flex;
+}
+.td:hover{
+    background-color: #1991ff;
+}
+
+#btn {
+    background-color: #1991ff;
+    cursor: pointer;
+}
+#btn:hover{
+    background-color: #dcdbe1;
+}
+
+input[type=button] {
+    font-family: 'Orbitron', sans-serif;
+    background-color: white;
+    color: black;
+    border: solid black 0.5px;
+    width: 100%;
+    border-radius: 5px;
+    height: 65%;
+    outline: none;
+    cursor: pointer;
+}
+
+input:active[type=button] {
+    background: #e5e5e5;
+    -webkit-box-shadow: inset 0px 0px 15px lightBlue;
+    -moz-box-shadow: inset 0px 0px 15px lightBlue;
+    box-shadow: inset 0px 0px 5px lightBlue;
+}
+
+.headerBanner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    width: 100%;
+    height: 80px;
+    background-image: linear-gradient(to right, rgb(255, 255, 255), rgb(83, 167, 246));
+    border: 1px solid #1991ff;
+    border-radius: 1rem;
+    padding: 0 10%;
+    box-sizing: border-box; 
+    z-index: 1000;
+  }
+
+.companyName {
+    font-size: large;
+    text-align: center;
+    margin: 0;
+}
+
+.profileLinkContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.profileTextLink {
+    margin-right: 10px; 
+    text-decoration: none; 
+    color: inherit; 
+    font-family: 'Orbitron', sans-serif; 
+}
+
+.profile {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    cursor: pointer;
+}
