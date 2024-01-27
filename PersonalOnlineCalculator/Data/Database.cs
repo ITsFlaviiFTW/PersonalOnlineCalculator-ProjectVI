@@ -193,5 +193,18 @@ namespace PersonalOnlineCalculator.Data
                 context.SaveChanges();
             }
         }
+
+        public static User GetUserByEmail(string email)
+        {
+            using var context = DataContext.Instance;
+            return context.Users.FirstOrDefault(u => u.Email == email);
+        }
+
+        public static User GetUserByUsername(string username)
+        {
+            using var context = DataContext.Instance;
+            return context.Users.FirstOrDefault(u => u.Username == username);
+        }
+
     }
 }

@@ -19,5 +19,7 @@ namespace PersonalOnlineCalculator.Models
         [Required]
         [Column("result")]
         public string Result { get; set; } = null!;
+
+        public int UserId { get; set; }
     }
 }

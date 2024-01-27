@@ -44,9 +44,9 @@ namespace PersonalOnlineCalculator.Controllers
             }
         }
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetUserProfile(int id)
+        public async Task<IActionResult> GetUserProfileAsync(int id)
         {
-            var user = await _authService.GetUserById(id);
+            var user = _authService.GetUserById(id);
             if (user != null)
             {
                 return Ok(user);
@@ -58,12 +58,12 @@ namespace PersonalOnlineCalculator.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateUserProfile(int id, [FromBody] User user)
+        public IActionResult UpdateUserProfile(int id, [FromBody] User user)
         {
             try
             {
                 user.Id = id; // Ensure the ID is set correctly
-                await _authService.UpdateUserProfile(user);
+                _authService.UpdateUserProfile(user);
                 return Ok();
             }
             catch (System.Exception ex)
@@ -73,11 +73,11 @@ namespace PersonalOnlineCalculator.Controllers
         }
 
         [HttpPatch("{id}/password")]
-        public async Task<IActionResult> UpdateUserPassword(int id, [FromBody] string newPassword)
+        public IActionResult UpdateUserPassword(int id, [FromBody] string newPassword)
         {
             try
             {
-                await _authService.UpdateUserPassword(id, newPassword);
+                _authService.UpdateUserPassword(id, newPassword);
                 return Ok();
             }
             catch (System.Exception ex)
