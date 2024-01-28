@@ -17,32 +17,43 @@ namespace PersonalOnlineCalculator.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] User newUser)
+        public async Task<IActionResult> Register([FromBody] RegisterModel registerModel)
         {
             try
             {
-                var user = await _authService.RegisterUser(newUser);
-                return Ok(user);
+                // Create a new User object from the RegisterModel
+                var newUser = new User
+                {
+                    Email = registerModel.Email,
+                    Username = registerModel.Username,
+                    PasswordHash = registerModel.Password // Make sure to hash the password
+                };
+
+                // Call the service to handle registration
+                var registeredUser = await _authService.RegisterUser(newUser);
+                return Ok(registeredUser);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] User loginDetails)
+        public async Task<IActionResult> Login([FromBody] LoginModel loginModel)
         {
             try
             {
-                var user = await _authService.LoginUser(loginDetails.Username, loginDetails.PasswordHash);
+                var user = await _authService.LoginUser(loginModel.Username, loginModel.Password);
                 return Ok(user);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
         }
+
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUserProfileAsync(int id)
         {

@@ -39,14 +39,14 @@ namespace PersonalOnlineCalculator.Services
             newUser.PasswordHash = HashPassword(newUser.PasswordHash);
 
             // Add the new user to the database
-            Database.AddUser(newUser); // Assuming this method is synchronous
+            Database.AddUser(newUser); 
             return newUser;
         }
 
         public async Task<User> LoginUser(string username, string password)
         {
             // Retrieve user by username
-            var user = Database.GetUserByUsername(username); // Assuming this method is synchronous
+            var user = Database.GetUserByUsername(username); 
             if (user == null)
             {
                 // User not found
@@ -68,7 +68,6 @@ namespace PersonalOnlineCalculator.Services
         {
             using (var sha256 = SHA256.Create())
             {
-                // Compute hash - note that password should be salted and hashed appropriately in production
                 var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
                 // Get the hashed string
                 return BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();

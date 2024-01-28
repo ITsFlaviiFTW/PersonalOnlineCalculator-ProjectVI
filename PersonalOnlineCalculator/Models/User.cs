@@ -10,7 +10,7 @@ namespace PersonalOnlineCalculator.Models
         [Key]
         [Required]
         [Column("id")]
-        public int Id { get; set; } = default(int);
+        public int Id { get; set; } = default(int); 
 
         [Required]
         [Column("name")]

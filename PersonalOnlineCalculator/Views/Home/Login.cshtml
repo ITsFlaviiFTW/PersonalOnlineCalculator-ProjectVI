@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="Login-page-body">
+    <header>
+        <h1 class="heading">Personal Online Calculator</h1>
+        <h3 class="title">Login or Signup to use the web app!</h3>
+    </header>
+
+    <div class="container">
+
+        <div class="slider"></div>
+        <div class="btn">
+            <button class="login">Login</button>
+            <button class="signup" onclick="window.location.href='Signup.html'">Signup</button>
+        </div>
+
+        <div class="form-section">
+            <form id="loginForm" method="post">
+                <input type="email" id="email" name="email" class="email ele" placeholder="youremail@email.com" />
+                <input type="password" id="password" name="password" class="password ele" placeholder="password" />
+                <button type="submit" class="clkbtn">Login</button>
+            </form>
+        </div>
+    </div>
+
+    @section Scripts {
+        <script type="text/javascript" src="~/js/Login.js"></script>
+    }
+</div>
