@@ -8,7 +8,7 @@
     font-family: "Poppins", sans-serif;
 }
 
-body {
+.Login-page-body {
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -19,25 +19,25 @@ body {
     background-color: rgb(231, 231, 231);
 }
 
-header {
+.loginHeader {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 20px;
 }
 
-.heading {
+.loginHeading {
     color: #1991ff;
 }
 
-.title {
+.loginTitle {
     font-weight: 400;
     letter-spacing: 1.5px;
 }
 
-.container {
+.loginContainer {
     height: 600px;
     width: 500px;
     background-color: white;
@@ -68,7 +68,7 @@ header {
     cursor: pointer;
 }
  
-.slider {
+.loginSlider {
     height: 60px;
     width: 150px;
     border-radius: 50px;
@@ -80,12 +80,8 @@ header {
     left: 100px;
     transition: all 0.5s ease-in-out;
 }
- 
-.moveslider {
-    left: 250px;
-}
- 
-.form-section {
+
+.login-form-section {
     height: 500px;
     width: 1000px;
     padding: 20px 0;
@@ -130,7 +126,7 @@ header {
     font-size: 18px;
 }
  
-.clkbtn {
+.login-clkbtn {
     height: 60px;
     width: 150px;
     border-radius: 50px;

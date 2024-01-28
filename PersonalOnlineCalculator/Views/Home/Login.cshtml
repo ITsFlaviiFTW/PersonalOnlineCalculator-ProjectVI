@@ -1,23 +1,25 @@
 @{
-    ViewData["Title"] = "GeeksforGeeks";
+    ViewData["Title"] = "Login";
 }
- 
- <div class="Login-page-body">
-    <header>
-        <h1 class="heading">Personal Online Calculator</h1>
-        <h3 class="title">Login or Signup to use the web app!</h3>
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/Login.css" />
+}
+
+<div class="Login-page-body">
+    <header class="loginHeader">
+        <h1 class="loginHeading">Personal Online Calculator</h1>
+        <h3 class="loginTitle">Login or Signup to use the web app!</h3>
     </header>
- 
-    <div class="container">
- 
-        <div class="slider"></div>
+
+    <div class="loginContainer">
+        <div class="loginSlider"></div>
         <div class="btn">
             <button class="login">Login</button>
-            <button class="signup" onclick="window.location.href='Signup.html'">Signup</button>
+            <button class="signup" onclick="location.href='@Url.Action("Signup", "Home")'">Signup</button>
         </div>
- 
-        <div class="form-section">
- 
+
+        <div class="login-form-section">
             <!-- login form -->
             <div class="login-box">
                 <input type="email"
@@ -26,25 +28,8 @@
                 <input type="password"
                        class="password ele"
                        placeholder="password">
-                <button class="clkbtn">Login</button>
-                <!-- add verification of existance of user -->
-            </div>
- 
-            <!-- signup form -->
-            <div class="signup-box">
-                <input type="text"
-                       class="name ele"
-                       placeholder="Enter your name">
-                <input type="email"
-                       class="email ele"
-                       placeholder="youremail@email.com">
-                <input type="password"
-                       class="password ele"
-                       placeholder="password">
-                <input type="password"
-                       class="password ele"
-                       placeholder="Confirm password">
-                <button class="clkbtn">Signup</button>
+                <button class="login-clkbtn">Login</button>
+                <!-- add verification of existence of user -->
             </div>
         </div>
     </div>
@@ -52,4 +37,3 @@
         <script type="text/javascript" src="~/js/Login.js"></script>
     }
 </div>
-</html>
