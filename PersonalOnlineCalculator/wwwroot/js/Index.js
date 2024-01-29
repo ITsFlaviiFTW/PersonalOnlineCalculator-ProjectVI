@@ -14,28 +14,14 @@ function display(value) {
     }
     document.getElementById("result").value += value;
 }
- 
+
+// Evaluate the expression and return the result
 function calculate() {
-    var expression = document.getElementById("result").value;
+    var p = document.getElementById("result").value;
+    var q = eval(p);
+    document.getElementById("result").value = q;
 
-    // Send expression to server for calculation
-    fetch('/Calculator/Calculate', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ expression: expression })
-    })
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById("result").value = data.result;
-            // Assuming the server returns an object with a 'result' property
-            addToHistory(expression, data.result);
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-
+    addToHistory(p, q);
     equalsPressedLast = true;
 }
 
@@ -44,7 +30,7 @@ function addToHistory(expression, result) {
     var historyTable = document.getElementById('historyBody');
     var newRow = historyTable.insertRow();
     var newCell = newRow.insertCell();
-    newCell.className = 'history-row'; 
+    newCell.className = 'history-row';
 
     var textNode = document.createTextNode(`${expression} = ${result}`);
     newCell.appendChild(textNode);
@@ -56,16 +42,42 @@ function addToHistory(expression, result) {
     deleteButton.className = 'delete-button';
     deleteButton.style.width = '15px';
     deleteButton.style.height = '15px';
-    deleteButton.addEventListener('click', function() {
+    deleteButton.addEventListener('click', function () {
         deleteRow(newRow);
     });
 
     newCell.appendChild(deleteButton);
 }
 
-// This function deletes a row from the history table
+// This function deletes a row from the history table and sends an API DELETE call
 function deleteRow(rowElement) {
     var historyTable = document.getElementById('historyBody');
     historyTable.removeChild(rowElement);
-}
 
+
+    // Send API DELETE call to delete the row from the database
+    var expression = rowElement.firstChild.textContent.split(' = ')[0];
+    var result = rowElement.firstChild.textContent.split(' = ')[1];
+    var data = {
+        expression: expression,
+        result: result
+    };
+
+    fetch('/api/history', {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => {
+            if (response.ok) {
+                console.log('Row deleted successfully');
+            } else {
+                console.log('Failed to delete row');
+            }
+        })
+        .catch(error => {
+            console.log('Error:', error);
+        });
+}

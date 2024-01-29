@@ -28,7 +28,7 @@ namespace PersonalOnlineCalculator.Services
         public async Task<User> RegisterUser(User newUser)
         {
             // Check if user already exists
-            var existingUser = Database.GetUserByEmail(newUser.Email);
+            var existingUser = Database.GetUser(newUser.Email);
             if (existingUser != null)
             {
                 // User already exists
@@ -46,7 +46,7 @@ namespace PersonalOnlineCalculator.Services
         public async Task<User> LoginUser(string username, string password)
         {
             // Retrieve user by username
-            var user = Database.GetUserByUsername(username); 
+            var user = Database.GetUser(username); 
             if (user == null)
             {
                 // User not found

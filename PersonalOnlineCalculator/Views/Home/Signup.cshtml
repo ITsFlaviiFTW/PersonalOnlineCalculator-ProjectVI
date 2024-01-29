@@ -2,65 +2,46 @@
     ViewData["Title"] = "Signup";
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width,
-                         initial-scale=1.0">
-    <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="~/css/login.css">
-</head>
+@section Styles {
+    <link rel="stylesheet" href="~/css/Signup.css" />
+}
 
-<body>
-    <header>
-        <h1 class="heading">Personal Online Calculator</h1>
-        <h3 class="title">Login or Signup to use the web app!</h3>
+<div class="signup-page-body">
+    <header class="signupHeader">
+        <h1 class="signupHeading">Personal Online Calculator</h1>
+        <h3 class="signupTitle">Login or Signup to use the web app!</h3>
     </header>
 
-    <div class="container">
-
-        <div class="slider"></div>
+    <div class="signupContainer">
+        <div class="signupSlider"></div>
         <div class="btn">
+            <button class="login" onclick="location.href='@Url.Action("Login", "Home")'">Login</button>
             <button class="signup">Signup</button>
-            <button class="login" onclick="window.location.href='Login.html'">Login</button>
         </div>
 
-        <div class="form-section">
-
-            <!-- login form -->
-            <div class="login-box">
-                <input type="email"
-                       class="email ele"
-                       placeholder="youremail@email.com">
-                <input type="password"
-                       class="password ele"
-                       placeholder="password">
-                <button class="clkbtn">Login</button>
-                <!-- add verification of existance of user -->
-            </div>
-
+        <div class="signup-form-section">
             <!-- signup form -->
             <div class="signup-box">
-                <input type="text"
+                <input type="name"
+                       id="name"
                        class="name ele"
                        placeholder="Enter your name">
                 <input type="email"
+                       id="email"
                        class="email ele"
                        placeholder="youremail@email.com">
                 <input type="password"
+                       id="password"
                        class="password ele"
                        placeholder="password">
                 <input type="password"
                        class="password ele"
                        placeholder="Confirm password">
-                <button class="clkbtn">Signup</button>
+                <button id="signup-clkbtn" class="signup-clkbtn">Signup</button>
             </div>
         </div>
     </div>
     @section Scripts {
         <script type="text/javascript" src="~/js/Signup.js"></script>
     }
-</body>
-</html>
+</div>

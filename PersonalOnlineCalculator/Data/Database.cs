@@ -1,17 +1,15 @@
-﻿using System.Xml.Linq;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using PersonalOnlineCalculator.Models;
+using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Net;
 using System.Numerics;
-using PersonalOnlineCalculator.Models;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System;
-using System.Linq;
-using Microsoft.AspNetCore.Identity;
+using System.Xml.Linq;
 
 namespace PersonalOnlineCalculator.Data
 {
-
     public static class Database
     {
         public static User GetUser(int id)
@@ -19,6 +17,15 @@ namespace PersonalOnlineCalculator.Data
             using var context = DataContext.Instance;
 
             var user = context.Users.FirstOrDefault(u => u.Id == id);
+
+            return user;
+        }
+
+        public static User GetUser(string username)
+        {
+            using var context = DataContext.Instance;
+
+            var user = context.Users.FirstOrDefault(u => u.Username.Equals(username));
 
             return user;
         }
@@ -184,6 +191,7 @@ namespace PersonalOnlineCalculator.Data
             // Remove the calculation from the many-to-many table
             var userCalculations = context.User_Calculations.Where(uc => uc.CalculationId == calculationId).ToList();
             context.User_Calculations.RemoveRange(userCalculations);
+            context.SaveChanges();
 
             // Remove the calculation from the Calculations table
             var calculationToDelete = context.Calculations.Find(calculationId);
@@ -193,18 +201,5 @@ namespace PersonalOnlineCalculator.Data
                 context.SaveChanges();
             }
         }
-
-        public static User GetUserByEmail(string email)
-        {
-            using var context = DataContext.Instance;
-            return context.Users.FirstOrDefault(u => u.Email == email);
-        }
-
-        public static User GetUserByUsername(string username)
-        {
-            using var context = DataContext.Instance;
-            return context.Users.FirstOrDefault(u => u.Username == username);
-        }
-
     }
 }

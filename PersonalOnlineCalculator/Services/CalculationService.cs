@@ -1,4 +1,5 @@
-﻿using PersonalOnlineCalculator.Models;
+﻿using System.Data; // Include this for DataTable.Compute
+using PersonalOnlineCalculator.Models;
 using PersonalOnlineCalculator.Data;
 
 namespace PersonalOnlineCalculator.Services
@@ -7,14 +8,21 @@ namespace PersonalOnlineCalculator.Services
     {
         public Calculation PerformCalculation(string expression)
         {
-            // Dummy logic for calculation - replace with real implementation.
-            var result = "42"; // Use an actual expression evaluator here.
-
-            return new Calculation
+            try
             {
-                Expression = expression,
-                Result = result
-            };
+                // Use DataTable Compute to evaluate the expression
+                var result = new DataTable().Compute(expression, null).ToString();
+                return new Calculation
+                {
+                    Expression = expression,
+                    Result = result
+                };
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (ex.Message) and handle it appropriately
+                throw new InvalidOperationException("An error occurred during calculation.", ex);
+            }
         }
 
         public void SaveCalculation(int userId, Calculation calculation)

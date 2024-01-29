@@ -32,7 +32,7 @@ namespace PersonalOnlineCalculator.Controllers
         [HttpPost("save")]
         public IActionResult SaveCalculation([FromBody] Calculation calculation)
         {
-            _calculationService.SaveCalculation(calculation.UserId, calculation);
+            _calculationService.SaveCalculation(calculation.Id, calculation);
             return Ok();
         }
 
