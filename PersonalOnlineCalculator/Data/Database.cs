@@ -8,7 +8,7 @@ using System.Net;
 using System.Numerics;
 using System.Xml.Linq;
 
-namespace Database
+namespace PersonalOnlineCalculator.Data
 {
     public static class Database
     {
