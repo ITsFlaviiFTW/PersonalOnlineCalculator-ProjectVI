@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PersonalOnlineCalculator.Models
 {
-    [Table("calculation")]
+    [Table("calculations")]
     public class Calculation
     {
         [Key]

@@ -9,12 +9,11 @@ namespace PersonalOnlineCalculator.Models
     {
         [Key]
         [Required]
-        [Column("userid")]
+        [Column("user_id")]
         public int UserId { get; set; } = default(int);
 
-        [Key]
         [Required]
-        [Column("calculationid")]
+        [Column("calculation_id")]
         public int CalculationId { get; set; } = default(int);
     }
 }

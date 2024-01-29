@@ -1,9 +1,8 @@
-﻿using Pomelo.EntityFrameworkCore;
-using Pomelo.EntityFrameworkCore.MySql;
-using Microsoft.EntityFrameworkCore;
-using System.Reflection.Metadata;
+﻿using Microsoft.EntityFrameworkCore;
 using PersonalOnlineCalculator.Models;
-using System.Collections.Generic;
+using Pomelo.EntityFrameworkCore;
+using Pomelo.EntityFrameworkCore.MySql;
+using System.Reflection.Metadata;
 
 public class DataContext : DbContext
 {
@@ -17,6 +16,7 @@ public class DataContext : DbContext
             return new DataContext();
         }
     }
+
     public DataContext()
     { }
 
@@ -30,7 +30,7 @@ public class DataContext : DbContext
     {
         var serverVersion = new MySqlServerVersion(new Version(8, 0, 28));
 
-        optionsBuilder.UseMySql("Server=db-online-calculator.cfl4q3qmo0sa.us-east-2.rds.amazonaws.com;Port=3306;Database=db-online-calculator;User=admin;Password=ottersarecool;", serverVersion, options =>
+        optionsBuilder.UseMySql("Server=db-online-calculator.cfl4q3qmo0sa.us-east-2.rds.amazonaws.com;Port=3306;Database=online-calculator;User=admin;Password=ottersarecool;", serverVersion, options =>
         {
             options.EnableStringComparisonTranslations();
         });

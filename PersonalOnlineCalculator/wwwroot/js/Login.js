@@ -1,3 +1,4 @@
+
 let signup = document.querySelector(".signup");
 let login = document.querySelector(".login");
 let slider = document.querySelector(".loginSlider");
@@ -13,25 +14,42 @@ login.addEventListener("click", () => {
     formSection.classList.remove("form-section-move");
 });
 
-// Get the login form element
-const loginForm = document.getElementById('form-section');
+// Get the login button
+const loginButton = document.getElementById('login-clkbtn');
 
-// Add event listener for form submission
-loginForm.addEventListener('submit', (event) => {
+loginButton.addEventListener('click', async (event) => {
     event.preventDefault(); // Prevent form submission
 
     // Get the input values
-    const username = document.getElementById('username').value;
+    const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
     // Perform validation
-    if (username.trim() === '' || password.trim() === '') {
+    if (email.trim() === '' || password.trim() === '') {
         alert('Please enter both username and password.');
         return;
     }
 
-    // Perform login logic here
-    // You can make an API call or perform any other necessary actions
+    try {
+        // Make an API call to check the username and password with the database
+        const response = await fetch('/api/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password })
+        });
 
-    loginForm.reset();
+        if (response.ok) {
+            // Redirect the user to the index.cshtml page
+            window.location.href = '@Url.Action("Index", "Home")';
+            // window.location.href = '/index.cshtml';
+        } else {
+            // If the response is not ok, show an error message
+            alert('Invalid username or password.');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred while logging in.');
+    }
 });

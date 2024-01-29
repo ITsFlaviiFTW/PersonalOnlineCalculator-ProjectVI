@@ -75,6 +75,7 @@
 .td{
     position: relative;
     display: flex;
+    width: 80%;
 }
 .td:hover{
     background-color: #1991ff;

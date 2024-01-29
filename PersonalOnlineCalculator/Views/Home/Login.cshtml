@@ -1,35 +1,38 @@
 @{
     ViewData["Title"] = "Login";
 }
-
+ 
 @section Styles {
     <link rel="stylesheet" href="~/css/Login.css" />
 }
 
-<div class="Login-page-body">
+ <div class="Login-page-body">
     <header class="loginHeader">
         <h1 class="loginHeading">Personal Online Calculator</h1>
         <h3 class="loginTitle">Login or Signup to use the web app!</h3>
     </header>
-
+ 
     <div class="loginContainer">
+ 
         <div class="loginSlider"></div>
         <div class="btn">
             <button class="login">Login</button>
-            <button class="signup" onclick="location.href='@Url.Action("Signup", "Home")'">Signup</button>
+            <button class="signup"onclick="location.href='@Url.Action("Signup", "Home")'">Signup</button>
         </div>
 
         <div class="login-form-section">
+ 
             <!-- login form -->
             <div class="login-box">
-                <input type="email"
+                <input type="email" 
+                       id="email" 
                        class="email ele"
                        placeholder="youremail@email.com">
                 <input type="password"
+                       id="password"
                        class="password ele"
                        placeholder="password">
-                <button class="login-clkbtn">Login</button>
-                <!-- add verification of existence of user -->
+                <button id="login-clkbtn" class="login-clkbtn">Login</button>
             </div>
         </div>
     </div>

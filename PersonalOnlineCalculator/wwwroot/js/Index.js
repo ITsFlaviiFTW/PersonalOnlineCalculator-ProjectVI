@@ -49,9 +49,35 @@ function addToHistory(expression, result) {
     newCell.appendChild(deleteButton);
 }
 
-// This function deletes a row from the history table
+// This function deletes a row from the history table and sends an API DELETE call
 function deleteRow(rowElement) {
     var historyTable = document.getElementById('historyBody');
     historyTable.removeChild(rowElement);
-}
 
+    
+    // Send API DELETE call to delete the row from the database
+    var expression = rowElement.firstChild.textContent.split(' = ')[0];
+    var result = rowElement.firstChild.textContent.split(' = ')[1];
+    var data = {
+        expression: expression,
+        result: result
+    };
+
+    fetch('/api/history', {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        if (response.ok) {
+            console.log('Row deleted successfully');
+        } else {
+            console.log('Failed to delete row');
+        }
+    })
+    .catch(error => {
+        console.log('Error:', error);
+    });
+}

@@ -21,7 +21,7 @@ namespace PersonalOnlineCalculator.Services
                 throw new Exception("User already exists.");
             }
             Database.AddUser(newUser.Username, newUser.Email, newUser.PasswordHash);
-            return newUser; //
+            return newUser;
         }
 
         public async Task<User> LoginUser(string username, string passwordHash)
