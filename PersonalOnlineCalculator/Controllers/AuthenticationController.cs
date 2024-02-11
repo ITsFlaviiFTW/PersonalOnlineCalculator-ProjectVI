@@ -7,13 +7,19 @@ namespace PersonalOnlineCalculator.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class AuthenticationController : ControllerBase
+    public class AuthenticationController : Controller //Changed from Controllerbase to Controller
     {
         private readonly AuthenticationService _authService;
 
         public AuthenticationController(AuthenticationService authService)
         {
             _authService = authService;
+        }
+        //Added this to fix routing issues
+        [HttpGet("login")]
+        public IActionResult Login()
+        {
+            return View("~/Views/Home/Login.cshtml");
         }
 
         [HttpPost("register")]
